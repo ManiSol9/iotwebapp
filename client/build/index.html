@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Mani Web Application</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+      p#temp,
+      p#humidity {
+        font-size: 45px;
+        font-weight: bold;
+        margin-top: 5%;
+      }
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #31708f;
+      }
+      .col-lg-12.main-block {
+        padding: 20px;
+        margin-top: 5%;
+        text-align: center;
+        background: #fff0f0;
+        border-radius: 10px;
+      }
+      .col-lg-12.text-center {
+        color: #fff;
+        font-weight: bold;
+        margin-top: 5%;
+      }
+      .col-lg-6.inner-block1 p,
+      .col-lg-6.inner-block2 p {
+        font-weight: bold;
+        font-size: 25px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h1 class="mt-5">Raspberry Pi Azure IoT Online Live Data</h1>
+        </div>
+        <div class="col-lg-12 main-block">
+          <div class="col-lg-6 inner-block1">
+            <p>Temperature (in C)</p>
+            <p id="temp"></p>
+          </div>
+          <div class="col-lg-6 inner-block2">
+            <p>Humidity</p>
+            <p id="humidity"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        type: "GET",
+        url: "api/v1/getdata",
+        success: function (data) {
+          document.getElementById("temp").innerHTML = data.temparature;
+          document.getElementById("humidity").innerHTML = data.humidity;
+        },
+      });
+    });
+
+    setInterval(function () {
+      $.ajax({
+        type: "GET",
+        url: "api/v1/getdata",
+        success: function (data) {
+          document.getElementById("temp").innerHTML = data.temparature;
+          document.getElementById("humidity").innerHTML = data.humidity;
+        },
+      });
+    }, 3000);
+  </script>
+</html>
