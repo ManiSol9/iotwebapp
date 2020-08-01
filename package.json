@@ -9,21 +9,8 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "bluebird": "^3.7.2",
-    "chai": "^4.2.0",
-    "mocha": "^7.1.1",
-    "mocha-junit-reporter": "^1.23.3",
-    "mocha-multi-reporters": "^1.1.7"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "@azure/storage-blob": "^12.1.2",
-    "@hapi/joi": "^17.1.1",
-    "axios": "^0.19.2",
-    "log4js": "^6.3.0",
-    "moment": "^2.27.0",
-    "azure-storage": "^2.10.3",
-    "express": "^4.16.4",
-    "nodemon": "^1.18.10"
+    "express": "^4.16.4"
   }
 }
